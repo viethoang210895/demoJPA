@@ -3,21 +3,23 @@ package com.codegym.service;
 import com.codegym.model.Customer;
 import com.codegym.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository customerRepository;
 
     @Override
     public List<Customer> findAll() {
-        return customerRepository.findAll();
+        return (List<Customer>) customerRepository.findAll();
     }
 
     @Override
     public Customer findById(Long id) {
-        return (Customer) customerRepository.findById(id);
+        return customerRepository.findById(id).get();
     }
 
     @Override
@@ -27,6 +29,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void remove(Long id) {
-        customerRepository.remove(id);
+        customerRepository.deleteById(id);
     }
 }
