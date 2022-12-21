@@ -5,5 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 public interface IProvinceService  extends PagingAndSortingRepository<Province, Long> {
-//    void remove(Long id);
+
 }

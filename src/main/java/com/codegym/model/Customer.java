@@ -1,15 +1,20 @@
 package com.codegym.model;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer  {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    @NotEmpty(message = "không được để trống")
+    @Size(min = 2,max = 30,message = "bắt buộc 2-30 kí tự")
     private String firstName;
+
+
     private String lastName;
     @ManyToOne
     @JoinColumn(name = "province_id")
